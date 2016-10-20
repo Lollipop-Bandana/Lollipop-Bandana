@@ -10,11 +10,13 @@ class Profile extends React.Component {
       <div className="user-profile">
         <img src={props.user.img} />
         <div className="user-info">
-        Name: {props.user.name} <br />
-        Mutual Friends: {props.user.mutualFriends} <br />
-        
+          Name: {props.user.name}<br />
+          Age: {props.form.age}<br />
+          Gender: {props.user.sex}<br />
+          About Me: {props.form.aboutMe}<br />     
         </div>
       </div>
+      {props.form.additional.address} ? <Have /> : <Looking />
     );
   }
 }
