@@ -17,7 +17,7 @@ class Profile extends React.Component {
           About Me: {props.form.aboutMe}<br />     
         </div>
       </div>
-      {props.form.additional.address} ? <Have /> : <Looking />
+      {props.form.additional.address} ? <HaveInfo /> : <LookingInfo />
     );
   }
 }
