@@ -1,5 +1,6 @@
 var React = require('react');
 
+// have room form
 var Have = () => {
   return (
     <div className="have-info">Address: 
