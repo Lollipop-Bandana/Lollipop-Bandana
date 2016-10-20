@@ -1,5 +1,6 @@
 var React = require('react');
 
+// looking for room form
 var Looking = () => {
   return (
     <div className="looking-info">
