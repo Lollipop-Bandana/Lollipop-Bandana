@@ -9,16 +9,29 @@ class Personality extends React.component {
 
   render() {
     return (
-      <form action="">
+      <form>
+        <small>Choices range from 1 - 7 from Strongly Disagree to Strongly Agree</small>
         <h3>I see myself as:</h3>
         <p>1. Extraverted, enthusiastic</p><br />
-        <input type="radio" name="stronglydisagree" value="stronglydisagree"><label for="stronglydisagree">Strongly Disagree</label></input><br />
-        <input type="radio" name="moderatelydisagree" value="moderatelydisagree"><label for="moderatelydisagree">Moderately Disagree</label></input> <br />
-        <input type="radio" name="disagree" value="disagree"><label for="disagree">Disagree a Little</label></input><br />
-        <input type="radio" name="neither" value="neither"><label for="neither">Neither Agree or Disagree</label></input><br />
-        <input type="radio" name="agree" value="agree"><label for="agree">Agree a Little</label></input><br />
-        <input type="radio" name="moderatelyagree" value="moderatelyagree"><label for="moderatelyagree">Moderately Agree</label></input><br />
-        <input type="radio" name="stronglyagree" value="stronglyagree"><label for="stronglyagree">Strongly Agree</label></input><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>2. Critical, quarrelsome</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>3. Dependable, self-disciplined</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>4. Anxious, easily upset</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>5. Open to new experiences, complex</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>6. Reserved, quiet</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>7. Sympathetic, warm</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>8. Disorganized, careless</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>9. Calm, emotionally stable</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
+        <p>10. Conventional, uncreative</p><br />
+        <input type="range" min="1" max="7" value="4"/><br />
       </form>
     );
   }
