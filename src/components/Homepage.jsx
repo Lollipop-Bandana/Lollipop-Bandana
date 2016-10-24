@@ -1,9 +1,8 @@
 // create stateless component (make stateful later if needed)
-var Homepage = ({loggedIn}) => {
-
+var Homepage = ({loggedIn, handleSignOutClick}) => {
   return (
     <div>
-      <Nav loggedIn={loggedIn} />
+      <Nav loggedIn={loggedIn, handleSignOutClick} />
       <div>
         <div className="banner-image" style="background-image:url('http://i.huffpost.com/gen/1294846/images/o-ROOMMATE-facebook.jpg')"></div>
         <h2>Find a New Housemate in Your Friend Network</h2>
