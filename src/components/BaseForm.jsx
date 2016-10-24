@@ -103,6 +103,9 @@ class BaseForm extends React.component {
       <div className="about">
         <input type="text" required placeholder="About Me..." />
       </div><br />
+      <div className="personality-form">
+        
+      </div>
       <button className="looking">Looking for a roommate</button>
       <button className="have">Have a room</button>
     </div> 
