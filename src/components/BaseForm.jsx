@@ -147,3 +147,5 @@ class BaseForm extends React.component {
     </div> 
   }
 }
+
+window.BaseForm = BaseForm;
