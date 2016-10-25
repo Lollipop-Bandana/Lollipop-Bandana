@@ -2,16 +2,27 @@ var React = require('react');
 var Personality = require('./Personality.jsx');
 
 class BaseForm extends React.component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstname: null,
+      lastname: null,
+
+    };
   }
 
-  // add prop types for user input
+  handleFirstNameChange(e) {
+    this.setState({ firstname: e.target.value });
+  }
+
+  handleLastNameChange(e) {
+    this.setState({ lastname: e.target.value });
+  }
 
   render() {
     <div className="base-form">
-      <input type="text" className="first-name" required placeholder="First Name" />
-      <input type="text" className="last-name" required placeholder="Last Name" />
+      <input type="text" className="first-name" required onChange={this.handleFirstNameChange} placeholder="First Name" />
+      <input type="text" className="last-name" required onChange={this.handleLastNameChange} placeholder="Last Name" />
       <br />
       <div className="birthday">
         Birthdate:
