@@ -1,4 +1,5 @@
 var React = require('react');
+var Personality = require('./Personality.jsx');
 
 class BaseForm extends React.component {
   constructor() {
@@ -105,6 +106,7 @@ class BaseForm extends React.component {
       <div className="about">
         <input type="text" required placeholder="About Me..." />
       </div><br />
+      <Personality /><br />
       <button className="looking">Looking for a roommate</button>
       <button className="have">Have a room</button>
     </div> 
