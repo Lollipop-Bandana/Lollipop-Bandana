@@ -7,6 +7,10 @@ class BaseForm extends React.component {
     this.state = {
       firstname: null,
       lastname: null,
+      birthmonth: null,
+      birthday: null,
+      birthyear: null,
+      gender: null,
       aboutme: null
     };
   }
@@ -17,6 +21,22 @@ class BaseForm extends React.component {
 
   handleLastNameChange(e) {
     this.setState({ lastname: e.target.value });
+  }
+
+  handleMonthChange(e) {
+    this.setState({ birthmonth: e.target.value });
+  }
+
+  handleDayChange(e) {
+    this.setState({ birthday: e.target.value });
+  }
+
+  handleYearChange(e) {
+    this.setState({ birthyear: e.target.value });
+  }
+
+  handleGenderChange(e) {
+    this.setState({ gender: e.target.value });
   }
 
   handleAboutMeChange(e) {
@@ -30,7 +50,7 @@ class BaseForm extends React.component {
       <br />
       <div className="birthday">
         Birthdate:
-        <select name="Month">
+        <select value={this.state.birthmonth} onChange={this.handleMonthChange} name="Month">
           <option value="January">January</option>
           <option value="February">February</option>
           <option value="March">March</option>
@@ -44,7 +64,7 @@ class BaseForm extends React.component {
           <option value="November">November</option>
           <option value="December">December</option>
         </select>
-        <select name="Day">
+        <select value={this.state.birthday} onChange={this.handleDayChange} name="Day">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -77,7 +97,7 @@ class BaseForm extends React.component {
           <option value="30">30</option>
           <option value="31">31</option>
         </select>
-        <select name="Year">
+        <select value={this.state.birthyear} onChange={this.handleYearChange} name="Year">
           <option value="2001">2001</option>
           <option value="2000">2000</option>
           <option value="1999">1999</option>
@@ -113,7 +133,7 @@ class BaseForm extends React.component {
         </select>
       </div><br />
       <div className="gender">
-        <select name="Gender">
+        <select value={this.state.gender} onChange={this.handleGenderChange} name="Gender">
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
