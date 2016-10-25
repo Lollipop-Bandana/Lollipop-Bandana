@@ -7,7 +7,7 @@ class BaseForm extends React.component {
     this.state = {
       firstname: null,
       lastname: null,
-
+      aboutme: null
     };
   }
 
@@ -17,6 +17,10 @@ class BaseForm extends React.component {
 
   handleLastNameChange(e) {
     this.setState({ lastname: e.target.value });
+  }
+
+  handleAboutMeChange(e) {
+    this.setState({ aboutme: e.target.value });
   }
 
   render() {
@@ -115,7 +119,7 @@ class BaseForm extends React.component {
         </select>
       </div>
       <div className="about">
-        <input type="text" required placeholder="About Me..." />
+        <input type="text" required onChange={this.handleAboutMeChange} placeholder="About Me..." />
       </div><br />
       <Personality /><br />
       <button className="looking">Looking for a roommate</button>
