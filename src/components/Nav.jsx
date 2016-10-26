@@ -20,3 +20,5 @@ Nav.propTypes = {
   loggedIn: React.PropTypes.bool.isRequired,
   handleSignOutClick: React.PropTypes.func.isRequired
 };
+
+window.Nav = Nav;

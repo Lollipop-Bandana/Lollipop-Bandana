@@ -1,10 +1,23 @@
 var BaseForm = () => (
   <div className="base-form">
+    First Name: <br />
     <input type="text" className="first-name" required placeholder="First Name" />
+    <br /><br />
+    Last Name: <br />
     <input type="text" className="last-name" required placeholder="Last Name" />
+    <br /><br />
+    <div className="gender">
+    Gender:
+    <br />
+      <select name="Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
     <br />
     <div className="birthday">
       Birthdate:
+      <br />
       <select name="Month">
         <option value="January">January</option>
         <option value="February">February</option>
@@ -52,7 +65,7 @@ var BaseForm = () => (
         <option value="30">30</option>
         <option value="31">31</option>
       </select>
-      <select value={this.state.birthyear} onChange={this.handleYearChange} name="Year">
+      <select name="Year">
         <option value="2001">2001</option>
         <option value="2000">2000</option>
         <option value="1999">1999</option>
@@ -87,13 +100,9 @@ var BaseForm = () => (
         <option value="1970">1970</option>
       </select>
     </div><br />
-    <div className="gender">
-      <select name="Gender">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
     <div className="about">
+    About Me:
+    <br />
       <input type="text" required placeholder="About Me..." />
     </div><br />
     <Personality /><br />
