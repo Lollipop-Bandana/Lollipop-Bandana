@@ -1,12 +1,12 @@
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
       <div>
-        <Looking />
+        <BaseForm />
       </div>
     );
   }
