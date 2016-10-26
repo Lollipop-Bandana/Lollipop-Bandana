@@ -1,5 +1,3 @@
-var React = require('react');
-
 // looking for room form
 var Looking = () => (
   <div className="looking-info">
@@ -51,3 +49,5 @@ var Looking = () => (
     </div>
   </div> 
 );
+
+window.Looking = Looking;
