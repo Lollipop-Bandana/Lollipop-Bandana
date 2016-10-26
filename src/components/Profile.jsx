@@ -1,5 +1,3 @@
-var React = require('react');
-
 class Profile extends React.Component {
   constructor (props) {
     super(props);
@@ -20,4 +18,6 @@ class Profile extends React.Component {
       {props.form.additional.address} ? <HaveInfo /> : <LookingInfo />
     );
   }
-}
+};
+
+window.Profile = Profile;

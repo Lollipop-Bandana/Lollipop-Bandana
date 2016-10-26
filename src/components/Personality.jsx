@@ -22,8 +22,9 @@ class Personality extends React.Component {
   render() {
     return (
       <form>
-        <small>Choices range from 1 - 7 from Strongly Disagree to Strongly Agree</small>
+        <h2>Please take this short quiz</h2>
         <h3>I see myself as:</h3>
+        Choices range from 1 - 7 from Strongly Disagree to Strongly Agree
         <p>1. Extraverted, enthusiastic</p><br />
         <input name="num1" type="range" min="1" max="7" step="1" value={this.state.num1} onInput={this.onSlideChange.bind(this)} onChange={this.onSlideChange.bind(this)} />
         <span>{this.state.num1}</span>

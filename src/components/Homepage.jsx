@@ -15,3 +15,5 @@ var Homepage = ({loggedIn, handleSignOutClick}) => {
 Homepage.propTypes = {
   loggedIn: React.PropTypes.bool.isRequired
 };
+
+window.Homepage = Homepage;
