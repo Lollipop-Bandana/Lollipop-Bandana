@@ -1,3 +1,11 @@
+var containerStyles = {
+  border: 'solid 1px black',
+  height: 'auto',
+  width: 'auto',
+  maxHeight: '30%',
+  maxWidth: '30%',
+  float: 'right'
+}
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -6,7 +14,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <BaseForm />
+        <div className="search-container" style={containerStyles}>
+        Hi
+        </div>
       </div>
     );
   }
