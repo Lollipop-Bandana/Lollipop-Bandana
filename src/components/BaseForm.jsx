@@ -15,7 +15,7 @@ class BaseForm extends React.Component {
 
   render() {
     return (
-      <div className="base-form">
+      <div className="base-form" style={{textAlign: 'center'}}>
         <h2>Basic Information</h2>
         First Name: <br />
         <input type="text" className="first-name" required placeholder="First Name" />
@@ -120,7 +120,7 @@ class BaseForm extends React.Component {
         <div className="about">
         About Me:
         <br />
-          <input type="text" required placeholder="About Me..." />
+          <input type="text" maxLength="140" required placeholder="About Me..." />
         </div><br />
         <Personality /><br />
         <button onClick={this.onLooking.bind(this)} className="looking">Looking for a roommate</button>
@@ -128,6 +128,6 @@ class BaseForm extends React.Component {
       </div> 
     );
   }
-}
+};
 
 window.BaseForm = BaseForm;

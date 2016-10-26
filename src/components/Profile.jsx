@@ -18,6 +18,6 @@ class Profile extends React.Component {
       {props.form.additional.address} ? <HaveInfo /> : <LookingInfo />
     );
   }
-}
+};
 
 window.Profile = Profile;
