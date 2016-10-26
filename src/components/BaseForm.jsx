@@ -15,7 +15,7 @@ class BaseForm extends React.Component {
 
   render() {
     return (
-      <div className="base-form" style={{textAlign: 'center'}}>
+      <div className="base-form">
         <h2>Basic Information</h2>
         First Name: <br />
         <input type="text" className="first-name" required placeholder="First Name" />
@@ -117,7 +117,7 @@ class BaseForm extends React.Component {
             <option value="1970">1970</option>
           </select>
         </div><br />
-        <div className="about">
+        <div className="about" style={{width: '100%', height: '100%'}}>
         About Me:
         <br />
           <input type="text" maxLength="140" required placeholder="About Me..." />
