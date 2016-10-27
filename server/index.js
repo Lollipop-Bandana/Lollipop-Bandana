@@ -5,6 +5,7 @@ var roomyRouter = require('./routers/roomy.js');
 
 var port = 8000;
 var app = express();
+// connect to database here
 
 
 // use middleware here
