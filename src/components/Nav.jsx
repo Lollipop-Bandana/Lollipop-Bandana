@@ -7,9 +7,9 @@ var Nav = ({loggedIn, handleSignOutClick}) => {
       <div>roomy</div>
       <div>
         <ul>
-          {loggedIn} ? <li><a href="/" onClick={() => handleSignOutClick()}>Sign Out</a></li> :
-                       <li><a href="login">Login</a></li>
-                       <li><a href="signup">Signup</a></li>
+          {loggedIn ? (<li><a href="/" onClick={() => handleSignOutClick()}>Sign Out</a></li>) :
+                       (<li><a href="login">Login</a></li>)
+                       (<li><a href="signup">Signup</a></li>)}
         </ul>
       </div>
     </div>
