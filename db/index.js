@@ -5,7 +5,6 @@ var db = new Sequelize('roomy', 'root', '', {
   dialect: 'mysql'
 });
 
-// we define the models we need using js--we don't need a schema file!
 var User = db.define('User', {
   id: { type: Sequelize.INTEGER, primaryKey: true },
   username: type:Sequelize.STRING(60),
