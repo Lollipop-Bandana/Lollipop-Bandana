@@ -7,26 +7,40 @@ var db = new Sequelize('roomy', 'root', '', {
 
 // we define the models we need using js--we don't need a schema file!
 var User = db.define('User', {
-  username: Sequelize.STRING
+  id: Sequelize.INTEGER,
+  username: type:Sequelize.STRING(60),
+  firstname: Sequelize.STRING,
+  lastname: Sequelize.STRING,
+  birthday: Sequelize.DATE,
+  gender: Sequelize.STRING,
+  aboutme: Sequelize.STRING,
+  quiz1: Sequelize.INTEGER, 
+  quiz2: Sequelize.INTEGER, 
+  quiz3: Sequelize.INTEGER, 
+  quiz4: Sequelize.INTEGER, 
+  quiz5: Sequelize.INTEGER, 
+  quiz6: Sequelize.INTEGER, 
+  quiz7: Sequelize.INTEGER, 
+  quiz8: Sequelize.INTEGER, 
+  quiz9: Sequelize.INTEGER, 
+  quiz10: Sequelize.INTEGER,
+  looking: Sequelize.BOOLEAN,
+  have: Sequelize.BOOLEAN,
+  profilepicture: { type: Sequelize.STRING, validate: { isUrl: true }},
+  friendslist: Sequelize.INTEGER
 });
 
-// var Message = db.define('Message', {
-//   text: Sequelize.STRING,
-//   roomname: Sequelize.STRING
-// });
+var Friend = db.define('Friend', {
+  userid: Sequelize.INTEGER,
+  friendid: Sequelize.INTEGER
+});
 
-// puts a UserId column on each Message instance
-// also gives us the `.setUser` method available
-// after creating a new instance of Message
-// Message.belongsTo(User);
-// enables bi-directional associations between Users and Messages
-// User.hasMany(Message);
+Friend.belongsTo(User);
+User.hasMany(Friend);
 
 
-// User.sync();
-// Message.sync();
-// creates these tables in MySQL if they don't already exist. Pass in {force: true}
-// to drop any existing user and message tables and make new ones.
+User.sync({force: true});
+Friend.sync({force: true});
 
 exports.User = User;
-// exports.Message = Message;
+exports.Friend = Friend;
