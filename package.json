@@ -4,7 +4,7 @@
   "description": "Finds roommates",
   "main": "index.js",
   "scripts": {
-    "start": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline -w",
+    "start": "webpack-dev-server --content-base mysrc/ --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,11 +15,14 @@
   "license": "ISC",
   "homepage": "https://github.com/Lollipop-Bandana/Lollipop-Bandana#readme",
   "dependencies": {
+    "babel-loader": "^6.2.7",
     "express": "^4.14.0",
+    "history": "^1.17.0",
     "jquery": "^3.1.1",
     "mongoose": "^4.6.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-router": "^3.0.0",
     "request": "^2.75.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"

@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  context: path.join(__dirname, "mysrc"),
+  context: path.resolve(__dirname, 'mysrc'),
   devtool: debug ? "inline-sourcemap" : null,
   entry: "./js/client.js",
   module: {
@@ -13,14 +13,13 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015'],
-          plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
+          presets: ['react', 'es2015']
         }
       }
     ]
   },
   output: {
-    path: __dirname + "/mysrc/",
+    path: path.resolve(__dirname, 'mysrc'),
     filename: "client.min.js"
   },
   plugins: debug ? [] : [
