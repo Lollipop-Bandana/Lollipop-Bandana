@@ -27,7 +27,7 @@ var User = db.define('User', {
   looking: Sequelize.BOOLEAN,
   have: Sequelize.BOOLEAN,
   profilepicture: { type: Sequelize.STRING, validate: { isUrl: true }},
-  friendslist: Sequelize.INTEGER
+  totalfriends: Sequelize.INTEGER
 });
 
 var Friend = db.define('Friend', {
