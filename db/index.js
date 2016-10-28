@@ -1,5 +1,9 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('roomy', 'root', '');
+var db = new Sequelize('roomy', 'root', '', {
+  host: "localhost",
+  port: 8000,
+  dialect: 'mysql'
+});
 
 // we define the models we need using js--we don't need a schema file!
 var User = db.define('User', {
@@ -25,4 +29,4 @@ var User = db.define('User', {
 // to drop any existing user and message tables and make new ones.
 
 exports.User = User;
-exports.Message = Message;
+// exports.Message = Message;
