@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
   context: path.resolve(__dirname, 'mysrc'),
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/client.js",
+  entry: "./js/client.jsx",
   module: {
     loaders: [
       {
