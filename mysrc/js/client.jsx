@@ -6,6 +6,7 @@ import Layout from "./components/Layout.jsx";
 import Nav from "./components/Nav.jsx";
 import App from "./components/App.jsx";
 import Homepage from "./components/Homepage.jsx";
+import Profile from "./components/Profile.jsx";
 
 const app = document.getElementById('app');
 ReactDOM.render((
@@ -13,6 +14,7 @@ ReactDOM.render((
     <Route path="/" component={Layout}>
       <IndexRoute component={Homepage}></IndexRoute>
       <Route path="app" component={App}></Route>
+      <Route path="profile/:profile" component={Profile}></Route>
     </Route>
   </Router>
 ), app);
