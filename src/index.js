@@ -1,8 +1,3 @@
-var ReactDOM = require('react-dom');
-var element = document.getElementById('app');
-
-// ReactDOM.render(<App />, element);
-
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
