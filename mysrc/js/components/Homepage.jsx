@@ -4,7 +4,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div>
-        <button>Login</button>
+        <button><a href="/auth/facebook">Login</a></button>
       </div>
     );
   }
