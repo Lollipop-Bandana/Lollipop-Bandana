@@ -10,8 +10,13 @@ var port = 8000;
 
 //possibly change endpoint 
 app.use('/api/roomy', router); 
-
 app.use(express.static(__dirname + '/../src'));
+
+// redirect any requests that aren't to the db or static
+// to client index.html and have react router handle them
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'src', 'index.html'));
+});
 
 app.listen(port, function() {
   console.log('Listening on port: ' + port);
