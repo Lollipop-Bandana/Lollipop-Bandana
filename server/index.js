@@ -1,6 +1,5 @@
 var express = require('express');
-var roomRouter = require('./routers/room.js');
-var roomyRouter = require('./routers/roomy.js');
+var path = require('path');
 
 
 var port = 8000;
@@ -9,9 +8,10 @@ var app = express();
 
 
 // use middleware here
-app.use(express.static(__dirname + '/../src'));
-app.use('/api/room', roomRouter); // adjust router name and endpoint when necessary
-app.use('/api/roomy', roomyRouter); // adjust router name and endpoint when necessary
+app.use(express.static(__dirname + '/src'));
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'src', 'index.html'));
+});
 
 
 app.listen(port, function() {
