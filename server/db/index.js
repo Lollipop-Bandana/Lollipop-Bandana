@@ -6,8 +6,9 @@ var db = new Sequelize('roomy', 'root', '', {
 });
 
 var User = db.define('User', {
+  // included both id and username, but we can choose either or
   id: { type: Sequelize.INTEGER, primaryKey: true },
-  username: type:Sequelize.STRING(60),
+  username: Sequelize.STRING(60),
   firstname: Sequelize.STRING,
   lastname: Sequelize.STRING,
   birthday: Sequelize.DATE,
