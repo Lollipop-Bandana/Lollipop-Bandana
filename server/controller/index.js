@@ -3,6 +3,7 @@ var db = require('../db');
 module.exports = {
   users: {
     get: function (req, res) {
+      // find all users
       db.User.findAll()
         .then(function(users) {
           res.json(users);
@@ -37,6 +38,8 @@ module.exports = {
         .spread(function(user, created) {
           res.sendStatus(created ? 201 : 200);
         });
-    }
+    },
+
+    // don't really have an idea of how to create friend table
   }
 };
