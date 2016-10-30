@@ -1,6 +1,6 @@
 import React from "react";
-import SearchListEntry from "./homepage/SearchListEntry.jsx";
-import {sortStyles, searchStyles, imageStyles} from "./homepage/styles.js";
+import SearchListEntry from "./app/SearchListEntry.jsx";
+import {sortStyles, searchStyles, imageStyles} from "./app/styles.js";
 
 class App extends React.Component {
   constructor(props) {

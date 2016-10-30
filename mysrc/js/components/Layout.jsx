@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "./Nav.jsx";
+import Nav from "./layout/Nav.jsx";
 
 class Layout extends React.Component {
   render() {

@@ -4,7 +4,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div>
-        <a href="/auth/facebook"><button>Login</button></a>
+        Welcome to Roomy!
       </div>
     );
   }
