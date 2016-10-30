@@ -6,7 +6,6 @@ const graph = require('fbgraph');
 //facebook api keys... dont add to github!
 const conf = require('./config');
 
-
 // Configuration
 
 app.use(express.static(__dirname + '/../mysrc/'));
@@ -18,6 +17,12 @@ app.use(express.static(__dirname + '/../mysrc/'));
 // app.get('/', function(req, res){
 //   res.render("index", { title: "click link to connect" });
 // });
+
+app.get('*', function(req, res, next) {
+  console.log('hi');
+  res.redirect('/app');
+  next();
+});
 
 app.get('/auth/facebook', function(req, res) {
 
@@ -44,7 +49,7 @@ app.get('/auth/facebook', function(req, res) {
       "client_id":      conf.client_id,
       "redirect_uri":   conf.redirect_uri,
       "client_secret":  conf.client_secret,
-      "code":           req.query.codes
+      "code":           req.query.code
   }, function (err, facebookRes) {
     console.log(facebookRes);
     res.redirect('/');
@@ -52,6 +57,7 @@ app.get('/auth/facebook', function(req, res) {
 });
 
 app.get('/auth/logout', function(req, res) {
+  graph.setAccessToken(null);
   console.log(graph.getAccessToken());
   res.redirect('/');
 });
