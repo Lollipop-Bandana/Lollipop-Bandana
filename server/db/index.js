@@ -1,9 +1,15 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('roomy', 'root', '', {
-  host: "localhost",
-  port: 8000,
+var db = new Sequelize('roomy', 'root', '123', {
   dialect: 'mysql'
 });
+
+db.authenticate()
+  .then(function(err) {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database:', err);
+  });
 
 var User = db.define('User', {
   id: { type: Sequelize.INTEGER, primaryKey: true },
@@ -22,14 +28,12 @@ var User = db.define('User', {
   quiz8: Sequelize.INTEGER, 
   quiz9: Sequelize.INTEGER, 
   quiz10: Sequelize.INTEGER,
-  profilepicture: { type: Sequelize.STRING, validate: { isUrl: true }},
-  friendslist: Sequelize.ARRAY,
   looking: Sequelize.BOOLEAN,
   have: Sequelize.BOOLEAN
 });
 
 var Have = db.define('Have', {
-  userid: { type: Sequelize.INTEGER, primaryKey: true },
+  userid: Sequelize.INTEGER,
   address1: Sequelize.STRING,
   address2: Sequelize.STRING,
   city: Sequelize.STRING,
@@ -40,20 +44,36 @@ var Have = db.define('Have', {
 });
 
 var Looking = db.define('Looking', {
-  userid: { type: Sequelize.INTEGER, primaryKey: true },
+  userid: Sequelize.INTEGER,
   roomtype: Sequelize.STRING,
   minprice: Sequelize.INTEGER,
   maxprice: Sequelize.INTEGER
 });
 
-Have.hasOne(User, { foreignKey: 'userid' });
-Looking.hasOne(User, { foreignKey: 'userid' });
+var Relationship = db.define('Relationship', {
+  userid: { type: Sequelize.INTEGER},
+  friendid: { type: Sequelize.INTEGER}
+});
 
+User.hasMany(Relationship, { foreignKey: 'userid', foreignKeyContraint: true });
+User.hasMany(Relationship, { foreignKey: 'friendid', foreignKeyContraint: true });
+User.hasOne(Have, { foreignKey: 'userid', foreignKeyContraint: true });
+User.hasOne(Looking, { foreignKey: 'userid', foreignKeyContraint:true });
 
-User.sync({ force: true });
-Have.sync({ force: true });
-Looking.sync({ force: true });
+db.query('SET FOREIGN_KEY_CHECKS = 0')
+.then(function(){
+    return db.sync({ force: true });
+})
+.then(function(){
+    return db.query('SET FOREIGN_KEY_CHECKS = 1')
+})
+.then(function(){
+    console.log('Database synchronised.');
+}, function(err){
+    console.log(err);
+});
 
 exports.User = User;
 exports.Have = Have;
 exports.Looking = Looking;
+exports.Relationship = Relationship;
