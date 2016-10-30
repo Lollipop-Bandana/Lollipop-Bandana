@@ -46,10 +46,14 @@ app.get('/auth/facebook', function(req, res) {
       "client_secret":  conf.client_secret,
       "code":           req.query.codes
   }, function (err, facebookRes) {
+    console.log(facebookRes);
     res.redirect('/');
   });
+});
 
-
+app.get('/auth/logout', function(req, res) {
+  console.log(graph.getAccessToken());
+  res.redirect('/');
 });
 
 
