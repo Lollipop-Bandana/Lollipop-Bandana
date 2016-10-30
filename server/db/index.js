@@ -56,6 +56,11 @@ var Relationship = db.define('Relationship', {
   friendid: { type: Sequelize.INTEGER}
 });
 
+User.hasMany(Friend, { foreignKey: 'userid' });
+User.hasMany(Friend, { foreignKey: 'friendid' });
+User.hasOne(Have, { foreignKey: 'userid' });
+User.hasOne(Looking, { foreignKey: 'userid' });
+
 User.sync({ force: true })
 .then(function() {
   return User.create({
@@ -75,12 +80,13 @@ User.sync({ force: true })
     quiz8: 1, 
     quiz9: 1, 
     quiz10: 1,
-    // profilepicture: 'http://cdn3-www.dogtime.com/assets/uploads/2011/01/file_23192_pembroke-welsh-corgi.jpg',
     looking: true,
     have: false
   });
 });
+
 Have.sync({ force: true });
+
 Looking.sync({ force: true })
 .then(function() {
   return Looking.create({
@@ -90,6 +96,7 @@ Looking.sync({ force: true })
     maxprice: 1000
   });  
 });
+
 Relationship.sync({ force: true })
 .then(function() {
   return Relationship.create({
