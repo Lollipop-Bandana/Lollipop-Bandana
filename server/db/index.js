@@ -1,9 +1,15 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('roomy', 'root', '', {
-  host: "localhost",
-  port: 8000,
+var db = new Sequelize('roomy', 'root', '123', {
   dialect: 'mysql'
 });
+
+db.authenticate()
+  .then(function(err) {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database:', err);
+  });
 
 var User = db.define('User', {
   id: { type: Sequelize.INTEGER, primaryKey: true },
@@ -22,8 +28,7 @@ var User = db.define('User', {
   quiz8: Sequelize.INTEGER, 
   quiz9: Sequelize.INTEGER, 
   quiz10: Sequelize.INTEGER,
-  profilepicture: { type: Sequelize.STRING, validate: { isUrl: true }},
-  friendslist: Sequelize.ARRAY,
+  // profilepicture: { type: Sequelize.STRING, validate: { isUrl: true }},
   looking: Sequelize.BOOLEAN,
   have: Sequelize.BOOLEAN
 });
@@ -46,14 +51,54 @@ var Looking = db.define('Looking', {
   maxprice: Sequelize.INTEGER
 });
 
-Have.hasOne(User, { foreignKey: 'userid' });
-Looking.hasOne(User, { foreignKey: 'userid' });
+var Relationship = db.define('Relationship', {
+  userid: { type: Sequelize.INTEGER},
+  friendid: { type: Sequelize.INTEGER}
+});
 
-
-User.sync({ force: true });
+User.sync({ force: true })
+.then(function() {
+  return User.create({
+    id: 1,
+    firstname: 'M',
+    lastname: 'O',
+    birthday: Date.now(),
+    gender: 'Female',
+    aboutme: 'i hate brew',
+    quiz1: 1, 
+    quiz2: 1, 
+    quiz3: 1, 
+    quiz4: 1, 
+    quiz5: 1, 
+    quiz6: 1, 
+    quiz7: 1, 
+    quiz8: 1, 
+    quiz9: 1, 
+    quiz10: 1,
+    // profilepicture: 'http://cdn3-www.dogtime.com/assets/uploads/2011/01/file_23192_pembroke-welsh-corgi.jpg',
+    looking: true,
+    have: false
+  });
+});
 Have.sync({ force: true });
-Looking.sync({ force: true });
+Looking.sync({ force: true })
+.then(function() {
+  return Looking.create({
+    userid: 1,
+    roomtype: 'One Bedroom',
+    minprice: 500,
+    maxprice: 1000
+  });  
+});
+Relationship.sync({ force: true })
+.then(function() {
+  return Relationship.create({
+    userid: 1,
+    friendid: 2
+  });
+});
 
 exports.User = User;
 exports.Have = Have;
 exports.Looking = Looking;
+exports.Relationship = Relationship;
