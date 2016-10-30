@@ -28,13 +28,12 @@ var User = db.define('User', {
   quiz8: Sequelize.INTEGER, 
   quiz9: Sequelize.INTEGER, 
   quiz10: Sequelize.INTEGER,
-  // profilepicture: { type: Sequelize.STRING, validate: { isUrl: true }},
   looking: Sequelize.BOOLEAN,
   have: Sequelize.BOOLEAN
 });
 
 var Have = db.define('Have', {
-  userid: { type: Sequelize.INTEGER, primaryKey: true },
+  userid: Sequelize.INTEGER,
   address1: Sequelize.STRING,
   address2: Sequelize.STRING,
   city: Sequelize.STRING,
@@ -45,7 +44,7 @@ var Have = db.define('Have', {
 });
 
 var Looking = db.define('Looking', {
-  userid: { type: Sequelize.INTEGER, primaryKey: true },
+  userid: Sequelize.INTEGER,
   roomtype: Sequelize.STRING,
   minprice: Sequelize.INTEGER,
   maxprice: Sequelize.INTEGER
@@ -56,53 +55,22 @@ var Relationship = db.define('Relationship', {
   friendid: { type: Sequelize.INTEGER}
 });
 
-User.hasMany(Friend, { foreignKey: 'userid' });
-User.hasMany(Friend, { foreignKey: 'friendid' });
-User.hasOne(Have, { foreignKey: 'userid' });
-User.hasOne(Looking, { foreignKey: 'userid' });
+User.hasMany(Relationship, { foreignKey: 'userid', foreignKeyContraint: true });
+User.hasMany(Relationship, { foreignKey: 'friendid', foreignKeyContraint: true });
+User.hasOne(Have, { foreignKey: 'userid', foreignKeyContraint: true });
+User.hasOne(Looking, { foreignKey: 'userid', foreignKeyContraint:true });
 
-User.sync({ force: true })
-.then(function() {
-  return User.create({
-    id: 1,
-    firstname: 'M',
-    lastname: 'O',
-    birthday: Date.now(),
-    gender: 'Female',
-    aboutme: 'i hate brew',
-    quiz1: 1, 
-    quiz2: 1, 
-    quiz3: 1, 
-    quiz4: 1, 
-    quiz5: 1, 
-    quiz6: 1, 
-    quiz7: 1, 
-    quiz8: 1, 
-    quiz9: 1, 
-    quiz10: 1,
-    looking: true,
-    have: false
-  });
-});
-
-Have.sync({ force: true });
-
-Looking.sync({ force: true })
-.then(function() {
-  return Looking.create({
-    userid: 1,
-    roomtype: 'One Bedroom',
-    minprice: 500,
-    maxprice: 1000
-  });  
-});
-
-Relationship.sync({ force: true })
-.then(function() {
-  return Relationship.create({
-    userid: 1,
-    friendid: 2
-  });
+db.query('SET FOREIGN_KEY_CHECKS = 0')
+.then(function(){
+    return db.sync({ force: true });
+})
+.then(function(){
+    return db.query('SET FOREIGN_KEY_CHECKS = 1')
+})
+.then(function(){
+    console.log('Database synchronised.');
+}, function(err){
+    console.log(err);
 });
 
 exports.User = User;
