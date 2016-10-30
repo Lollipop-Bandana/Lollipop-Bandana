@@ -52,7 +52,11 @@ Looking.hasOne(User, { foreignKey: 'userid' });
 
 User.sync({ force: true });
 Have.sync({ force: true });
-Looking.sync({ force: true });
+Looking.sync({ force: true }).create({
+  roomtype: 'One Bedroom',
+  minprice: 500,
+  maxprice: 2000
+});
 
 exports.User = User;
 exports.Have = Have;
