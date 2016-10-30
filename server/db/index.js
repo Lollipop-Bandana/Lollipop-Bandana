@@ -6,9 +6,7 @@ var db = new Sequelize('roomy', 'root', '', {
 });
 
 var User = db.define('User', {
-  // included both id and username, but we can choose either or
   id: { type: Sequelize.INTEGER, primaryKey: true },
-  username: Sequelize.STRING(60),
   firstname: Sequelize.STRING,
   lastname: Sequelize.STRING,
   birthday: Sequelize.DATE,
@@ -25,14 +23,15 @@ var User = db.define('User', {
   quiz9: Sequelize.INTEGER, 
   quiz10: Sequelize.INTEGER,
   profilepicture: { type: Sequelize.STRING, validate: { isUrl: true }},
-  totalfriends: Sequelize.INTEGER,
+  friendslist: Sequelize.ARRAY,
   looking: Sequelize.BOOLEAN,
   have: Sequelize.BOOLEAN
 });
 
 var Have = db.define('Have', {
-  userid: Sequelize.INTEGER,
-  address: Sequelize.STRING,
+  userid: { type: Sequelize.INTEGER, primaryKey: true },
+  address1: Sequelize.STRING,
+  address2: Sequelize.STRING,
   city: Sequelize.STRING,
   state: Sequelize.STRING,
   zipcode: Sequelize.INTEGER,
@@ -41,28 +40,20 @@ var Have = db.define('Have', {
 });
 
 var Looking = db.define('Looking', {
-  userid: Sequelize.INTEGER,
+  userid: { type: Sequelize.INTEGER, primaryKey: true },
+  roomtype: Sequelize.STRING,
   minprice: Sequelize.INTEGER,
   maxprice: Sequelize.INTEGER
 });
 
-var Friend = db.define('Friend', {
-  userid: Sequelize.INTEGER,
-  friendid: Sequelize.INTEGER
-});
-
-Friend.belongsTo(User);
 Have.hasOne(User, { foreignKey: 'userid' });
 Looking.hasOne(User, { foreignKey: 'userid' });
-User.hasMany(Friend, { foreignKey: 'userid', foreignKey: 'friendid' });
 
 
 User.sync({ force: true });
-Friend.sync({ force: true });
 Have.sync({ force: true });
 Looking.sync({ force: true });
 
 exports.User = User;
-exports.Friend = Friend;
 exports.Have = Have;
 exports.Looking = Looking;
