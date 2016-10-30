@@ -1,9 +1,14 @@
 var controller = require('./controller');
 var router = require('express').Router();
 
-router.get('/users', controller.users.get);
+router.get('/userprofile', controller.users.getOne);
 
-router.post('/users', controller.users.post);
+router.get('/mainapp', controller.users.getMatches);
 
+router.post('/baseform', controller.users.postOne);
+
+router.post('/have', controller.have.postOne);
+
+router.post('/looking', controller.looking.postOne);
 
 module.exports = router;
