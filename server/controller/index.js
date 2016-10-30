@@ -2,22 +2,50 @@ var db = require('../db');
 
 module.exports = {
   users: {
-    get: function (req, res) {
-      // find all users
-      db.User.findAll()
-        .then(function(users) {
-          res.json(users);
+    getOne: function (req, res) {
+      db.User.findOne({ where: { id: req.body.id },
+      attributes: ['id', 'firstname', 'lastname', 'birthday', 'looking', 'have', 'gender', 'aboutme', 'profilepicture'] })
+        .then(function(user) {
+          if (user.have) {
+            db.Have.findOne({ where: { userid: user.id },
+              attributes: ['address1', 'address2', 'city', 'state', 'zipcode', 'roomtype', 'price'] })
+            .then(function(candidate) {
+              for (var key in candidate) {
+                if (user[key] === undefined) {
+                  user[key] = candidate[key];
+                }
+              }
+              res.send(user);
+            });
+          } else {
+            db.Looking.findOne({ where: { userid: user.id },
+              attributes: ['roomtype', 'minprice', 'maxprice'] })
+            .then(function(candidate) {
+              for (var key in candidate) {
+                if (user[key] === undefined) {
+                  user[key] = candidate[key];
+                }
+              }
+              res.send(user);
+            });
+          }
         });
     },
-    post: function (req, res) {
-      // if using only id, we can change this to req.body.id
-      db.User.findOrCreate({where: {
+    getMatches: function(req, res) {
+      db.User.find({ where: {
+        id: req.body.friendslist,
+        looking: req.body.looking
+      }})
+      .then(function(match) {
+        res.send(match);
+      });
+    },
+    postOne: function (req, res) {
+      db.User.findOrCreate({ where: {
         id: req.body.id,
-        username: req.body.username,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         birthday: req.body.birthday,
-        // (req.body.birthmonth + "/" + req.body.birthday + "/" + req.body.birthyear)
         gender: req.body.gender,
         aboutme: req.body.aboutme,
         quiz1: req.body.quiz1,
@@ -31,15 +59,43 @@ module.exports = {
         quiz9: req.body.quiz9,
         quiz10: req.body.quiz10,
         profilepicture: req.body.profilepicture,
-        totalfriends: req.body.totalfriends,
+        friendslist: req.body.friendslist,
         looking: req.body.looking,
         have: req.body.have
         }})
         .spread(function(user, created) {
           res.sendStatus(created ? 201 : 200);
         });
-    },
-
-    // don't really have an idea of how to create friend table
+    }
+  },
+  have: {
+    postOne: function(req, res) {
+      db.have.findOrCreate({ where: {
+        userid: req.body.id,
+        address1: req.body.address1,
+        address2: req.body.address2,
+        city: req.body.city,
+        state: req.body.state,
+        zipcode: req.body.zipcode,
+        roomtype: req.body.roomtype,
+        price: req.body.price
+      }})
+      .spread(function(app, created) {
+        res.sendStatus(created ? 201 : 200)
+      });
+    }
+  },
+  looking: {
+    postOne: function(req, res) {
+      db.have.findOrCreate({ where: {
+        userid: req.body.id,
+        roomtype: req.body.roomtype,
+        minprice: req.body.minprice,
+        maxprice: req.body.maxprice
+      }})
+      .spread(function(app, created) {
+        res.sendStatus(created ? 201 : 200);
+      });
+    }
   }
 };
