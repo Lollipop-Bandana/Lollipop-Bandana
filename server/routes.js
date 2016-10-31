@@ -11,4 +11,8 @@ router.post('/have', controller.have.postOne);
 
 router.post('/looking', controller.looking.postOne);
 
+router.get('/auth/login',  controller.auth.login);
+
+router.get('/auth/logout', controller.auth.logout);
+
 module.exports = router;

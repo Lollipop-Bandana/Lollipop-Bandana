@@ -12,28 +12,28 @@ db.authenticate()
   });
 
 var User = db.define('User', {
-  id: { type: Sequelize.INTEGER, primaryKey: true },
+  id: { type: Sequelize.BIGINT, primaryKey: true },
   firstname: Sequelize.STRING,
   lastname: Sequelize.STRING,
   birthday: Sequelize.DATE,
   gender: Sequelize.STRING,
   aboutme: Sequelize.STRING,
-  quiz1: Sequelize.INTEGER, 
-  quiz2: Sequelize.INTEGER, 
-  quiz3: Sequelize.INTEGER, 
-  quiz4: Sequelize.INTEGER, 
-  quiz5: Sequelize.INTEGER, 
-  quiz6: Sequelize.INTEGER, 
-  quiz7: Sequelize.INTEGER, 
-  quiz8: Sequelize.INTEGER, 
-  quiz9: Sequelize.INTEGER, 
+  quiz1: Sequelize.INTEGER,
+  quiz2: Sequelize.INTEGER,
+  quiz3: Sequelize.INTEGER,
+  quiz4: Sequelize.INTEGER,
+  quiz5: Sequelize.INTEGER,
+  quiz6: Sequelize.INTEGER,
+  quiz7: Sequelize.INTEGER,
+  quiz8: Sequelize.INTEGER,
+  quiz9: Sequelize.INTEGER,
   quiz10: Sequelize.INTEGER,
   looking: Sequelize.BOOLEAN,
   have: Sequelize.BOOLEAN
 });
 
 var Have = db.define('Have', {
-  userid: Sequelize.INTEGER,
+  userid: Sequelize.BIGINT,
   address1: Sequelize.STRING,
   address2: Sequelize.STRING,
   city: Sequelize.STRING,
@@ -44,15 +44,15 @@ var Have = db.define('Have', {
 });
 
 var Looking = db.define('Looking', {
-  userid: Sequelize.INTEGER,
+  userid: Sequelize.BIGINT,
   roomtype: Sequelize.STRING,
   minprice: Sequelize.INTEGER,
   maxprice: Sequelize.INTEGER
 });
 
 var Relationship = db.define('Relationship', {
-  userid: { type: Sequelize.INTEGER},
-  friendid: { type: Sequelize.INTEGER}
+  userid: { type: Sequelize.BIGINT},
+  friendid: { type: Sequelize.BIGINT}
 });
 
 User.hasMany(Relationship, { foreignKey: 'userid', foreignKeyContraint: true });

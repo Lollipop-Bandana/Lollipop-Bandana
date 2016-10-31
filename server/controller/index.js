@@ -1,6 +1,8 @@
 var db = require('../db');
+var auth = require('./authentication');
 
 module.exports = {
+  auth: auth,
   users: {
     getOne: function (req, res) {
       db.User.findOne({ where: { id: req.body.id },

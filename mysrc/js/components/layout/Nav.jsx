@@ -2,20 +2,26 @@ import React from "react";
 import { Link } from "react-router";
 
 class Nav extends React.Component {
-  
+
   getPath() {
     return "/profile/" + (Math.random() * 100 << 0);
   }
-  
+
   render() {
     return (
-      <div>
-        <Link to="/"><button>Homepage</button></Link>
-        <Link to="/app"><button>App</button></Link>
-        <Link to={this.getPath}><button>Profile</button></Link>
-        <a href="/auth/facebook"><button>Login</button></a>
-        <a href="/auth/logout"><button>Logout</button></a>
+    <div className="navbar navbar-default">
+      <div className="container-fluid">
+        <ul className="nav navbar-nav">
+            <li><Link to="/">Homepage</Link></li>
+            <li><Link to="/app">App</Link></li>
+            <li><Link to={this.getPath}>Profile</Link></li>
+        </ul>
+        <ul className="nav navbar-nav navbar-right">
+          <li><a href="/api/auth/login">Login</a></li>
+          <li><a href="/api/auth/logout">Logout</a></li>
+        </ul>
       </div>
+    </div>
     );
   }
 }
