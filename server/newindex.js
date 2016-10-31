@@ -60,7 +60,30 @@ app.get('/auth/login', function(req, res) {
       "client_secret":  conf.client_secret,
       "code":           req.query.code
   }, function (err, facebookRes) {
-    console.log(facebookRes);
+    graph.batch([
+      {
+        method: "GET",
+        relative_url: "me" // Get the current user's profile information
+      },
+      {
+        method: "GET",
+        relative_url: "me/friends" // Get the friends of the current user that also use the app
+      }
+    ], function(err, res) {
+      console.log(res);
+      const profile = JSON.parse(res[0].body);
+      const friends = JSON.parse(res[1].body);
+
+      db.User.findOrCreate({ where: {
+          id: profile.id
+        }, defaults: {
+          id: profile.id,
+          name: profile.name
+        }}).spread((user, created) => {
+          console.log('it worked', user, created);
+        });
+
+    });
     res.redirect('/');
   });
 });
