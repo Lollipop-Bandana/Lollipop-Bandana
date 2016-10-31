@@ -2,3 +2,4 @@
 /src/lib/
 /compiled/
 .DS_Store
+/mysrc/client.min.js
