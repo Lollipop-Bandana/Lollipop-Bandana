@@ -19,6 +19,7 @@ class Nav extends React.Component {
         <Link to="/"><button onClick={this.makeRequest.bind(this)}>Homepage</button></Link>
         <Link to="/app"><button>App</button></Link>
         <Link to={this.getProf}><button>Profile</button></Link>
+        <Link to="/signup"><button>SignUp</button></Link>
         <a href="/auth/facebook"><button>Login</button></a>
         <a href="/auth/logout"><button>Logout</button></a>
       </div>

@@ -8,6 +8,9 @@ import App from "./components/App.jsx";
 import Homepage from "./components/Homepage.jsx";
 import Profile from "./components/Profile.jsx";
 import NotFound from "./components/NotFound.jsx";
+import BaseForm from "./components/BaseForm.jsx";
+import Have from "./components/baseform/Have.jsx";
+import Looking from "./components/baseform/Looking.jsx";
 
 const app = document.getElementById('app');
 
@@ -31,6 +34,10 @@ ReactDOM.render((
       <IndexRoute component={Homepage}></IndexRoute>
       <Route path="app" component={App} onEnter={checkLogged}></Route>
       <Route path="profile/:profile" component={Profile}></Route>
+      <Route path="signup" component={BaseForm}>
+        <Route path="/have" component={Have}></Route>
+        <Route path="/looking" component={Looking}></Route>
+      </Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>
