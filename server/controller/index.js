@@ -5,14 +5,17 @@ module.exports = {
   auth: auth,
   users: {
     getOne: function (req, res) {
-      console.log('inside getOne');
-      db.User.findOne({ where: { id: req.body.id },
+      db.User.findOne({ where: { id: req.query.id },
       attributes: ['id', 'firstname', 'lastname', 'birthday', 'looking', 'have', 'gender', 'aboutme'] })
-        .then(function(user) {
+        .then(function(userResult) {
+          var user = userResult.dataValues;
+
           if (user.have) {
             db.Have.findOne({ where: { userid: user.id },
               attributes: ['address1', 'address2', 'city', 'state', 'zipcode', 'roomtype', 'price'] })
-            .then(function(candidate) {
+            .then(function(candidateResult) {
+              var candidate = candidateResult.dataValues;
+
               for (var key in candidate) {
                 if (user[key] === undefined) {
                   user[key] = candidate[key];
@@ -21,9 +24,12 @@ module.exports = {
               res.send(user);
             });
           } else {
+            console.log(user);
             db.Looking.findOne({ where: { userid: user.id },
               attributes: ['roomtype', 'minprice', 'maxprice'] })
-            .then(function(candidate) {
+            .then(function(candidateResult) {
+              var candidate = candidateResult.dataValues;
+
               for (var key in candidate) {
                 if (user[key] === undefined) {
                   user[key] = candidate[key];
@@ -35,12 +41,19 @@ module.exports = {
         });
     },
     getMatches: function(req, res) {
-      db.User.find({ where: {
-        id: req.body.friendslist,
-        looking: req.body.looking
+      var friendIds = req.query.friendIds.map(function(friendIdString) {
+        return +friendIdString;
+      });
+
+      db.User.findAll({ where: {
+        id: friendIds,
+        looking: !req.query.looking
       }})
-      .then(function(match) {
-        res.send(match);
+      .then(function(userResults) {
+        var userMatches = userResults.map(function(userResult) {
+          return userResult.dataValues;
+        });
+        res.send(userMatches);
       });
     },
     postOne: function (req, res) {
@@ -84,7 +97,7 @@ module.exports = {
         price: req.body.price
       }})
       .spread(function(app, created) {
-        res.sendStatus(created ? 201 : 200)
+        res.sendStatus(created ? 201 : 200);
       });
     }
   },
