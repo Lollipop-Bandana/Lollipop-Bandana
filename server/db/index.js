@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('roomy', 'root', null, {
+var db = new Sequelize('roomy', 'root', 'password', {
   dialect: 'mysql'
 });
 

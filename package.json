@@ -4,7 +4,7 @@
   "description": "Finds roommates",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base mysrc/ --inline --hot",
+    "start": "nodemon server/newindex.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
