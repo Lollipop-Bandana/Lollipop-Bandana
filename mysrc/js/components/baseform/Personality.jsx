@@ -1,3 +1,5 @@
+import React from 'react';
+
 class Personality extends React.Component {
   constructor() {
     super();
