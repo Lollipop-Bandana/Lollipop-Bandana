@@ -5,6 +5,7 @@ const graph = require('fbgraph');
 const db = require('./db');
 var controller = require('./controller');
 
+var results = [];
 
 //facebook api keys... dont add to github!
 const conf = require('./config');
@@ -33,7 +34,12 @@ app.get('/status', function(req, res, next) {
   }
 });
 
+app.get('/api/getResults', function(req, res) {
+  res.send(JSON.stringify(results));
+});
+
 app.get('/auth/login', function(req, res) {
+  results = [];
 
   // we don't have a code yet
   // so we'll redirect to the oauth dialog
@@ -70,19 +76,30 @@ app.get('/auth/login', function(req, res) {
         relative_url: "me/friends" // Get the friends of the current user that also use the app
       }
     ], function(err, res) {
-      console.log(res);
+      console.log('res', res);
       const profile = JSON.parse(res[0].body);
       const friends = JSON.parse(res[1].body);
 
       db.User.findOrCreate({ where: {
-          id: profile.id
+          name: profile.name
         }, defaults: {
           id: profile.id,
           name: profile.name
         }}).spread((user, created) => {
-          console.log('it worked', user, created);
+          // results.push(user.dataValues);
+          // console.log('it worked', user, created);
+          // getUserDataFromArr(friends.data);
         });
-
+        friends.data.forEach(function(friend) {
+          db.User.findOrCreate({ where: {
+            name: friend.name
+          }, defaults: {
+            id: friend.id,
+            name: friend.name
+          }}).spread((user, created) => {
+            results.push(user);
+          });
+        });
     });
     res.redirect('/');
   });
@@ -90,7 +107,7 @@ app.get('/auth/login', function(req, res) {
 
 app.get('/auth/logout', function(req, res) {
   graph.setAccessToken(null);
-  console.log(graph.getAccessToken());
+  // console.log(graph.getAccessToken());
   res.redirect('/');
 });
 

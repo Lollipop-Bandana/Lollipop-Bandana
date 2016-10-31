@@ -1,13 +1,21 @@
 import React from "react";
 import SearchListEntry from "./app/SearchListEntry.jsx";
 import {sortStyles, searchStyles, imageStyles} from "./app/styles.js";
+import request from "browser-request";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  getResults() {
+    request("/api/getResults", function(err, res, body) {
+      console.log(body);
+    });
+  }
+
   render() {
+    this.getResults();
     return (
       <div>
         <div className="sort-container" style={sortStyles}>
