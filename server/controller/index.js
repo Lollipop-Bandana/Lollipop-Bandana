@@ -3,6 +3,7 @@ var db = require('../db');
 module.exports = {
   users: {
     getOne: function (req, res) {
+      console.log('inside getOne');
       db.User.findOne({ where: { id: req.body.id },
       attributes: ['id', 'firstname', 'lastname', 'birthday', 'looking', 'have', 'gender', 'aboutme'] })
         .then(function(user) {

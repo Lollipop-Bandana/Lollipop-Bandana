@@ -9,7 +9,7 @@ var port = 8000;
 
 
 //possibly change endpoint 
-app.use('/api', router); 
+app.use('/api', router);
 app.use(express.static(__dirname + '/../src'));
 
 // redirect any requests that aren't to the db or static
