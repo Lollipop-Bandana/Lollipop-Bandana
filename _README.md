@@ -1,6 +1,6 @@
-# Project Name
+# Roomy
 
-> Pithy project description
+> A revolutionary application to find a new roommate within your friend network.
 
 ## Team
 
@@ -20,15 +20,18 @@
 
 ## Usage
 
-> Some usage instructions
+> General Overview
+  > Sign Up
+    - Upon visiting the site homepage, you should either log in or sign up.
+    - Once logged in (signing up will also log you in), you will be navigated to the main application page.
+  > Main Application
+    - Here you can see all of the potential matches.
+    - If you are looking for a roommate for your home, you will be shown people in your friend network that are looking for a home.
+    - If you are looking for a home, you will be shown people in your friend network that are looking for a roommate.
 
 ## Requirements
-
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+  - Node 0.10.x
+  - MySQL 5.7.x
 
 ## Development
 
@@ -37,7 +40,7 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
+npm install -g bower
 npm install
 bower install
 ```
