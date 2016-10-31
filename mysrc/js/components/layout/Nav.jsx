@@ -13,7 +13,7 @@ class Nav extends React.Component {
     $.ajax({
       url: '/api/usermatches',
       method: 'GET',
-      data: {userid: 12345},
+      data: {friendIds: [1, 2], looking: false},
       success: function(data) {
         console.log(data);
       },
@@ -21,6 +21,17 @@ class Nav extends React.Component {
         console.log(error);
       }
     });
+    // $.ajax({
+    //   url: '/api/userprofile',
+    //   method: 'GET',
+    //   data: {id: 12345},
+    //   success: function(data) {
+    //     console.log(data);
+    //   },
+    //   error: function(error) {
+    //     console.log(error);
+    //   }
+    // });
   }
 
   render() {

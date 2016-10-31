@@ -39,18 +39,19 @@ module.exports = {
         });
     },
     getMatches: function(req, res) {
-      db.Relationship.find({ where: {
-        userid: req.query.userid
+      var friendIds = req.query.friendIds.map(function(friendIdString) {
+        return +friendIdString;
+      });
+
+      db.User.findAll({ where: {
+        id: friendIds
+        // looking: !req.query.looking
       }})
-      .then(function(friendsResult) {
-        console.log(friendsResult);
-        // db.User.find({ where: {
-        //   id: req.body.friendslist,
-        //   looking: req.body.looking
-        // }})
-        // .then(function(match) {
-        //   res.send(match);
-        // });
+      .then(function(userResults) {
+        var userMatches = userResults.map(function(userResult) {
+          return userResult.dataValues;
+        });
+        res.send(userMatches);
       });
     },
     postOne: function (req, res) {
