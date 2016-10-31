@@ -60,13 +60,17 @@ User.hasMany(Relationship, { foreignKey: 'friendid', foreignKeyContraint: true }
 User.hasOne(Have, { foreignKey: 'userid', foreignKeyContraint: true });
 User.hasOne(Looking, { foreignKey: 'userid', foreignKeyContraint: true });
 
-
-User.sync({ force: true });
-Have.sync({ force: true });
-Looking.sync({ force: true }).create({
-  roomtype: 'One Bedroom',
-  minprice: 500,
-  maxprice: 2000
+db.query('SET FOREIGN_KEY_CHECKS = 0')
+.then(function() {
+  return db.sync({ force: true });
+})
+.then(function() {
+  return db.query('SET FOREIGN_KEY_CHECKS = 1');
+})
+.then(function() {
+  console.log('Database synchronized.');
+}, function(err) {
+  console.log(err);
 });
 
 exports.User = User;
