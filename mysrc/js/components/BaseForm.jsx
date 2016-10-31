@@ -1,6 +1,13 @@
+import Personality from "./baseform/Personality.jsx";
 class BaseForm extends React.Component {
-  constructor() {
-    super();
+  onLooking() {
+    // call specific router link for looking form
+    console.log('looking');
+  }
+
+  onHave() {
+    // call specfic router link for have form
+    console.log('have');
   }
 
   render() {
@@ -115,9 +122,11 @@ class BaseForm extends React.Component {
         <Personality /><br />
         <button onClick={this.onLooking.bind(this)} className="looking">Looking for a roommate</button>
         <button onClick={this.onHave.bind(this)} className="have">Have a room</button>
+        <br />
+        {this.props.children}
       </div> 
     );
   }
 };
 
-window.BaseForm = BaseForm;
+export default BaseForm;
