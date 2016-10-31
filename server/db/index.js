@@ -177,7 +177,7 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
     have: false
   });
   Looking.create({
-    userid: 12347,
+    userid: 12348,
     roomtype: 'Shared Bedroom',
     minprice: 500,
     maxprice: 1500
