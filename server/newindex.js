@@ -18,10 +18,12 @@ app.use(express.static(__dirname + '/../mysrc/'));
 //   res.render("index", { title: "click link to connect" });
 // });
 
-app.get('*', function(req, res, next) {
-  console.log('hi');
-  res.redirect('/app');
-  next();
+app.get('/status', function(req, res, next) {
+  if (graph.getAccessToken()) {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 });
 
 app.get('/auth/facebook', function(req, res) {

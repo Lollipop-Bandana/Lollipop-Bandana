@@ -16,6 +16,7 @@
   "homepage": "https://github.com/Lollipop-Bandana/Lollipop-Bandana#readme",
   "dependencies": {
     "babel-loader": "^6.2.7",
+    "browser-request": "^0.3.3",
     "express": "^4.14.0",
     "fbgraph": "^1.3.0",
     "history": "^1.17.0",
