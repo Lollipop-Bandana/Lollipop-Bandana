@@ -95,7 +95,7 @@ module.exports = {
         price: req.body.price
       }})
       .spread(function(app, created) {
-        res.sendStatus(created ? 201 : 200)
+        res.sendStatus(created ? 201 : 200);
       });
     }
   },
