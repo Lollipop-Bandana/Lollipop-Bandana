@@ -13,8 +13,9 @@ db.authenticate()
 
 var User = db.define('User', {
   id: { type: Sequelize.BIGINT, primaryKey: true },
-  firstname: Sequelize.STRING,
-  lastname: Sequelize.STRING,
+  // firstname: Sequelize.STRING,
+  // lastname: Sequelize.STRING,
+  name: Sequelize.STRING,
   birthday: Sequelize.DATE,
   gender: Sequelize.STRING,
   aboutme: Sequelize.STRING,
@@ -72,8 +73,7 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
   console.log('Database synchronized.');
   User.create({
     id: 12345,
-    firstname: 'Michael',
-    lastname: 'Stromberg',
+    name: 'Miguel Juan Stromberguesa',
     birthday: '12/28/1987',
     gender: 'Male',
     aboutme: 'I like dogs.',
@@ -103,8 +103,7 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
   });
   User.create({
     id: 12346,
-    firstname: 'Felicia',
-    lastname: 'Fong',
+    name: 'Felicia Fong',
     birthday: '09/29/1992',
     gender: 'Female',
     aboutme: 'It would be awesome to move in with someone who has a dog.',
@@ -130,8 +129,7 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
   });
   User.create({
     id: 12347,
-    firstname: 'Shensen',
-    lastname: 'Wang',
+    name: 'Shensen Wang',
     birthday: '06/19/1992',
     gender: 'Male',
     aboutme: 'I have zero furniture.',
@@ -157,8 +155,9 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
   });
   User.create({
     id: 12348,
-    firstname: 'Marissa',
-    lastname: 'Okada',
+    // firstname: 'Marissa',
+    // lastname: 'Okada',
+    name: 'Marissa Okada',
     birthday: '10/20/1994',
     gender: 'Female',
     aboutme: 'I drive fast.',
