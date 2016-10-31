@@ -74,7 +74,7 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
     id: 12345,
     firstname: 'Michael',
     lastname: 'Stromberg',
-    birthday: '01/01/2000',
+    birthday: '12/28/1987',
     gender: 'Male',
     aboutme: 'I like dogs.',
     quiz1: 8,
@@ -91,19 +91,23 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
     looking: true,
     have: false
   });
-  Looking.create({
+  Have.create({
     userid: 12345,
+    address1: '123 Fake Street',
+    address2: 'Apt. F',
+    city: 'Fakeville',
+    state: 'CA',
+    zipcode: 93103,
     roomtype: 'One Bedroom',
-    minprice: 500,
-    maxprice: 1500
+    price: 1800
   });
-    User.create({
+  User.create({
     id: 12346,
     firstname: 'Felicia',
     lastname: 'Fong',
-    birthday: '01/01/2000',
+    birthday: '09/29/1992',
     gender: 'Female',
-    aboutme: 'I like dogs.',
+    aboutme: 'It would be awesome to move in with someone who has a dog.',
     quiz1: 5,
     quiz2: 5,
     quiz3: 5,
@@ -128,9 +132,9 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
     id: 12347,
     firstname: 'Shensen',
     lastname: 'Wang',
-    birthday: '01/01/2000',
+    birthday: '06/19/1992',
     gender: 'Male',
-    aboutme: 'I like dogs.',
+    aboutme: 'I have zero furniture.',
     quiz1: 7,
     quiz2: 7,
     quiz3: 7,
@@ -151,13 +155,13 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
     minprice: 500,
     maxprice: 1500
   });
-    User.create({
+  User.create({
     id: 12348,
     firstname: 'Marissa',
     lastname: 'Okada',
-    birthday: '01/01/2000',
+    birthday: '10/20/1994',
     gender: 'Female',
-    aboutme: 'I like dogs.',
+    aboutme: 'I drive fast.',
     quiz1: 6,
     quiz2: 6,
     quiz3: 6,
