@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('roomy', 'root', '123', {
+var db = new Sequelize('roomy', 'root', null, {
   dialect: 'mysql'
 });
 
@@ -58,19 +58,45 @@ var Relationship = db.define('Relationship', {
 User.hasMany(Relationship, { foreignKey: 'userid', foreignKeyContraint: true });
 User.hasMany(Relationship, { foreignKey: 'friendid', foreignKeyContraint: true });
 User.hasOne(Have, { foreignKey: 'userid', foreignKeyContraint: true });
-User.hasOne(Looking, { foreignKey: 'userid', foreignKeyContraint:true });
+User.hasOne(Looking, { foreignKey: 'userid', foreignKeyContraint: true });
 
 db.query('SET FOREIGN_KEY_CHECKS = 0')
-.then(function(){
-    return db.sync({ force: true });
+.then(function() {
+  return db.sync({ force: true });
 })
-.then(function(){
-    return db.query('SET FOREIGN_KEY_CHECKS = 1')
+.then(function() {
+  return db.query('SET FOREIGN_KEY_CHECKS = 1');
 })
-.then(function(){
-    console.log('Database synchronised.');
-}, function(err){
-    console.log(err);
+.then(function() {
+  console.log('Database synchronised.');
+  User.create({
+    id: 12345,
+    firstname: 'Michael',
+    lastname: 'Stromberg',
+    birthday: Date.now(),
+    gender: 'M',
+    aboutme: 'I like dogs.',
+    quiz1: 10, 
+    quiz2: 10, 
+    quiz3: 10, 
+    quiz4: 10, 
+    quiz5: 10, 
+    quiz6: 10, 
+    quiz7: 10, 
+    quiz8: 10, 
+    quiz9: 10, 
+    quiz10: 10,
+    looking: true,
+    have: false
+  });
+  Looking.create({
+    userid: 12345,
+    roomtype: 'One Bedroom',
+    minprice: 500,
+    maxprice: 1500
+  });
+}, function(err) {
+  console.log(err);
 });
 
 exports.User = User;

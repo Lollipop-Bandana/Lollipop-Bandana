@@ -4,7 +4,7 @@ module.exports = {
   users: {
     getOne: function (req, res) {
       db.User.findOne({ where: { id: req.body.id },
-      attributes: ['id', 'firstname', 'lastname', 'birthday', 'looking', 'have', 'gender', 'aboutme', 'profilepicture'] })
+      attributes: ['id', 'firstname', 'lastname', 'birthday', 'looking', 'have', 'gender', 'aboutme'] })
         .then(function(user) {
           if (user.have) {
             db.Have.findOne({ where: { userid: user.id },
@@ -62,10 +62,10 @@ module.exports = {
         friendslist: req.body.friendslist,
         looking: req.body.looking,
         have: req.body.have
-        }})
-        .spread(function(user, created) {
-          res.sendStatus(created ? 201 : 200);
-        });
+      }})
+      .spread(function(user, created) {
+        res.sendStatus(created ? 201 : 200);
+      });
     }
   },
   have: {
