@@ -69,6 +69,32 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
 })
 .then(function() {
   console.log('Database synchronized.');
+  User.create({
+    id: 12345,
+    firstname: 'Michael',
+    lastname: 'Stromberg',
+    birthday: Date.now(),
+    gender: 'M',
+    aboutme: 'I like dogs.',
+    quiz1: 10, 
+    quiz2: 10, 
+    quiz3: 10, 
+    quiz4: 10, 
+    quiz5: 10, 
+    quiz6: 10, 
+    quiz7: 10, 
+    quiz8: 10, 
+    quiz9: 10, 
+    quiz10: 10,
+    looking: true,
+    have: false
+  });
+  Looking.create({
+    userid: 12345,
+    roomtype: 'One Bedroom',
+    minprice: 500,
+    maxprice: 1500
+  });
 }, function(err) {
   console.log(err);
 });
