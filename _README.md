@@ -31,7 +31,7 @@
 
 ## Requirements
   - Node 0.10.x
-  - MySql 5.7.x
+  - MySQL 5.7.x
 
 ## Development
 
