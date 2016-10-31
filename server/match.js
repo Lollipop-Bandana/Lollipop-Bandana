@@ -35,4 +35,3 @@ var compatable = {
     '12347': (scores['12348']['score'] / scores['12347']['score']) * 100,
   }
 }
-
