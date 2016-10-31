@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('roomy', 'root', 'password', {
+var db = new Sequelize('roomy', 'root', '123', {
   dialect: 'mysql'
 });
 
@@ -28,6 +28,7 @@ var User = db.define('User', {
   quiz8: Sequelize.INTEGER,
   quiz9: Sequelize.INTEGER,
   quiz10: Sequelize.INTEGER,
+  profilepicture: Sequelize.STRING,
   looking: Sequelize.BOOLEAN,
   have: Sequelize.BOOLEAN
 });
@@ -73,25 +74,107 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
     id: 12345,
     firstname: 'Michael',
     lastname: 'Stromberg',
-    birthday: Date.now(),
-    gender: 'M',
+    birthday: '01/01/2000',
+    gender: 'Male',
     aboutme: 'I like dogs.',
-    quiz1: 10,
-    quiz2: 10,
-    quiz3: 10,
-    quiz4: 10,
-    quiz5: 10,
-    quiz6: 10,
-    quiz7: 10,
-    quiz8: 10,
-    quiz9: 10,
-    quiz10: 10,
+    quiz1: 8,
+    quiz2: 8,
+    quiz3: 8,
+    quiz4: 8,
+    quiz5: 8,
+    quiz6: 8,
+    quiz7: 8,
+    quiz8: 8,
+    quiz9: 8,
+    quiz10: 8,
+    profilepicture: 'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/12019994_10104226862625247_3533097912733085828_n.jpg?oh=b0fc0f5e9c011571554f630329c5e72b&oe=588B5CF3',
     looking: true,
     have: false
   });
   Looking.create({
     userid: 12345,
     roomtype: 'One Bedroom',
+    minprice: 500,
+    maxprice: 1500
+  });
+    User.create({
+    id: 12346,
+    firstname: 'Felicia',
+    lastname: 'Fong',
+    birthday: '01/01/2000',
+    gender: 'Female',
+    aboutme: 'I like dogs.',
+    quiz1: 5,
+    quiz2: 5,
+    quiz3: 5,
+    quiz4: 5,
+    quiz5: 5,
+    quiz6: 5,
+    quiz7: 5,
+    quiz8: 5,
+    quiz9: 5,
+    quiz10: 5,
+    profilepicture: 'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/1908147_10154081582864552_5571469349424214024_n.jpg?oh=be523d904987bf1f625ac9852903e2e1&oe=588B8995',
+    looking: true,
+    have: false
+  });
+  Looking.create({
+    userid: 12346,
+    roomtype: 'One Bedroom',
+    minprice: 1000,
+    maxprice: 2000
+  });
+  User.create({
+    id: 12347,
+    firstname: 'Shensen',
+    lastname: 'Wang',
+    birthday: '01/01/2000',
+    gender: 'Male',
+    aboutme: 'I like dogs.',
+    quiz1: 7,
+    quiz2: 7,
+    quiz3: 7,
+    quiz4: 7,
+    quiz5: 7,
+    quiz6: 7,
+    quiz7: 7,
+    quiz8: 7,
+    quiz9: 7,
+    quiz10: 7,
+    profilepicture: 'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/12359989_10208011562505515_6986849593287005772_n.jpg?oh=341e739471313d0d60ec5886de003e27&oe=58CF2908',
+    looking: true,
+    have: false
+  });
+  Looking.create({
+    userid: 12347,
+    roomtype: 'Shared Bedroom',
+    minprice: 500,
+    maxprice: 1500
+  });
+    User.create({
+    id: 12348,
+    firstname: 'Marissa',
+    lastname: 'Okada',
+    birthday: '01/01/2000',
+    gender: 'Female',
+    aboutme: 'I like dogs.',
+    quiz1: 6,
+    quiz2: 6,
+    quiz3: 6,
+    quiz4: 6,
+    quiz5: 6,
+    quiz6: 6,
+    quiz7: 6,
+    quiz8: 6,
+    quiz9: 6,
+    quiz10: 6,
+    profilepicture: 'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/11742904_10153323694270617_3940034414772100605_n.jpg?oh=8f8bdf2543d49651507a57a75fa4a9b2&oe=58D0A3AC',
+    looking: true,
+    have: false
+  });
+  Looking.create({
+    userid: 12347,
+    roomtype: 'Shared Bedroom',
     minprice: 500,
     maxprice: 1500
   });
