@@ -3,14 +3,17 @@ var db = require('../db');
 module.exports = {
   users: {
     getOne: function (req, res) {
-      console.log('inside getOne');
-      db.User.findOne({ where: { id: req.body.id },
+      db.User.findOne({ where: { id: req.query.id },
       attributes: ['id', 'firstname', 'lastname', 'birthday', 'looking', 'have', 'gender', 'aboutme'] })
-        .then(function(user) {
+        .then(function(userResult) {
+          var user = userResult.dataValues;
+
           if (user.have) {
             db.Have.findOne({ where: { userid: user.id },
               attributes: ['address1', 'address2', 'city', 'state', 'zipcode', 'roomtype', 'price'] })
-            .then(function(candidate) {
+            .then(function(candidateResult) {
+              var candidate = candidateResult.dataValues;
+
               for (var key in candidate) {
                 if (user[key] === undefined) {
                   user[key] = candidate[key];
@@ -19,9 +22,12 @@ module.exports = {
               res.send(user);
             });
           } else {
+            console.log(user);
             db.Looking.findOne({ where: { userid: user.id },
               attributes: ['roomtype', 'minprice', 'maxprice'] })
-            .then(function(candidate) {
+            .then(function(candidateResult) {
+              var candidate = candidateResult.dataValues;
+
               for (var key in candidate) {
                 if (user[key] === undefined) {
                   user[key] = candidate[key];
@@ -33,12 +39,18 @@ module.exports = {
         });
     },
     getMatches: function(req, res) {
-      db.User.find({ where: {
-        id: req.body.friendslist,
-        looking: req.body.looking
+      db.Relationship.find({ where: {
+        userid: req.query.userid
       }})
-      .then(function(match) {
-        res.send(match);
+      .then(function(friendsResult) {
+        console.log(friendsResult);
+        // db.User.find({ where: {
+        //   id: req.body.friendslist,
+        //   looking: req.body.looking
+        // }})
+        // .then(function(match) {
+        //   res.send(match);
+        // });
       });
     },
     postOne: function (req, res) {

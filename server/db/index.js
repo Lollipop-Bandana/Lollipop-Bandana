@@ -89,11 +89,79 @@ db.query('SET FOREIGN_KEY_CHECKS = 0')
     looking: true,
     have: false
   });
+  User.create({
+    id: 1,
+    firstname: 'First1',
+    lastname: 'Last1',
+    birthday: Date.now(),
+    gender: 'M',
+    aboutme: 'Fake stuff.',
+    quiz1: 10,
+    quiz2: 10,
+    quiz3: 10,
+    quiz4: 10,
+    quiz5: 10,
+    quiz6: 10,
+    quiz7: 10,
+    quiz8: 10,
+    quiz9: 10,
+    quiz10: 10,
+    looking: false,
+    have: true
+  });
+  User.create({
+    id: 2,
+    firstname: 'First2',
+    lastname: 'Last2',
+    birthday: Date.now(),
+    gender: 'M',
+    aboutme: 'Fake stuff.',
+    quiz1: 10,
+    quiz2: 10,
+    quiz3: 10,
+    quiz4: 10,
+    quiz5: 10,
+    quiz6: 10,
+    quiz7: 10,
+    quiz8: 10,
+    quiz9: 10,
+    quiz10: 10,
+    looking: false,
+    have: true
+  });
   Looking.create({
     userid: 12345,
     roomtype: 'One Bedroom',
     minprice: 500,
     maxprice: 1500
+  });
+  Have.create({
+    userid: 1,
+    address1: '123 Fake Street',
+    address2: '',
+    city: 'Fake Town',
+    state: 'CA',
+    zipcode: 99999,
+    roomtype: 'One Bedroom',
+    price: 800
+  });
+  Have.create({
+    userid: 2,
+    address1: '456 Fake Court',
+    address2: 'Apt. 1',
+    city: 'Fakeville',
+    state: 'AL',
+    zipcode: 88888,
+    roomtype: 'One Bedroom',
+    price: 900
+  });
+  Relationship.create({
+    userid: 12345,
+    friendid: 1
+  });
+  Relationship.create({
+    userid: 12345,
+    friendid: 2
   });
 }, function(err) {
   console.log(err);

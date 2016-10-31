@@ -3,6 +3,8 @@ var router = require('express').Router();
 
 router.get('/userprofile', controller.users.getOne);
 
+router.get('/usermatches', controller.users.getMatches);
+
 router.get('/mainapp', controller.users.getMatches);
 
 router.post('/baseform', controller.users.postOne);

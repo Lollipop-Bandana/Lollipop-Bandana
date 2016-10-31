@@ -21,9 +21,8 @@ app.use(express.static(__dirname + '/../mysrc/'));
 //   res.render("index", { title: "click link to connect" });
 // });
 
-app.get('/api/userprofile', function(req, res, next) {
-  res.send('hi');
-});
+app.get('/api/userprofile', controller.users.getOne);
+app.get('/api/usermatches', controller.users.getMatches);
 
 app.get('/status', function(req, res, next) {
   if (graph.getAccessToken()) {
