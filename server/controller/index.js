@@ -1,6 +1,8 @@
 var db = require('../db');
+var auth = require('./authentication');
 
 module.exports = {
+  auth: auth,
   users: {
     getOne: function (req, res) {
       console.log('inside getOne');

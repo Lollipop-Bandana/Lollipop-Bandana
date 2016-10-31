@@ -33,7 +33,7 @@ app.get('/status', function(req, res, next) {
   }
 });
 
-app.get('/auth/facebook', function(req, res) {
+app.get('/auth/login', function(req, res) {
 
   // we don't have a code yet
   // so we'll redirect to the oauth dialog
