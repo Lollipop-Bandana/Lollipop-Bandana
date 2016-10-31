@@ -44,8 +44,8 @@ module.exports = {
       });
 
       db.User.findAll({ where: {
-        id: friendIds
-        // looking: !req.query.looking
+        id: friendIds,
+        looking: !req.query.looking
       }})
       .then(function(userResults) {
         var userMatches = userResults.map(function(userResult) {
