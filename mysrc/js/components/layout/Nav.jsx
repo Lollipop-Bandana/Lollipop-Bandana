@@ -19,8 +19,8 @@ class Nav extends React.Component {
             <li><Link to={this.getPath}>Profile</Link></li>
         </ul>
         <ul className="nav navbar-nav navbar-right">
-          <li><a href="/api/auth/login">Login</a></li>
-          <li><a href="/api/auth/logout">Logout</a></li>
+          <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
         </ul>
       </div>
     </div>

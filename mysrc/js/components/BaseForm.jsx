@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Personality from "./baseform/Personality.jsx";
 class BaseForm extends React.Component {
   onLooking() {
@@ -124,7 +126,7 @@ class BaseForm extends React.Component {
         <button onClick={this.onHave.bind(this)} className="have">Have a room</button>
         <br />
         {this.props.children}
-      </div> 
+      </div>
     );
   }
 };
