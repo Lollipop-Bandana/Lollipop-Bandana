@@ -1,5 +1,7 @@
-import React from "react";
-import { Link } from "react-router";
+import React from 'react';
+import { Link } from 'react-router';
+import $ from 'jquery';
+import request from 'browser-request';
 
 class Nav extends React.Component {
 

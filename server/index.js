@@ -13,6 +13,7 @@ var port = 3000;
 app.use('/api', router);
 app.use(express.static(__dirname + '/../mysrc'));
 
+
 // redirect any requests that aren't to the db or static
 // to client index.html and have react router handle them
 // app.get('*', function(req, res) {

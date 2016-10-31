@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
 const graph = require('fbgraph');
+// const router = require('./routes.js');
+const db = require('./db');
+var controller = require('./controller');
 
 
 //facebook api keys... dont add to github!
 const conf = require('./config');
 
 // Configuration
-
+// app.use('/api', router);
 app.use(express.static(__dirname + '/../mysrc/'));
 
 // app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
@@ -18,10 +21,16 @@ app.use(express.static(__dirname + '/../mysrc/'));
 //   res.render("index", { title: "click link to connect" });
 // });
 
-app.get('*', function(req, res, next) {
-  console.log('hi');
-  res.redirect('/app');
-  next();
+app.get('/api/userprofile', function(req, res, next) {
+  res.send('hi');
+});
+
+app.get('/status', function(req, res, next) {
+  if (graph.getAccessToken()) {
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 });
 
 app.get('/auth/login', function(req, res) {
