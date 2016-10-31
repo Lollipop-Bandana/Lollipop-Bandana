@@ -18,8 +18,21 @@ var compatable = {
     '12346': (scores['12346']['score'] / scores['12345']['score']) * 100,
     '12347': (scores['12347']['score'] / scores['12345']['score']) * 100,
     '12348': (scores['12348']['score'] / scores['12345']['score']) * 100,
+  },
+  '12346': {
+    '12345': (scores['12346']['score'] / scores['12345']['score']) * 100,
+    '12347': (scores['12346']['score'] / scores['12347']['score']) * 100,
+    '12348': (scores['12346']['score'] / scores['12348']['score']) * 100,
+  },
+  '12347': {
+    '12345': (scores['12347']['score'] / scores['12345']['score']) * 100,
+    '12346': (scores['12346']['score'] / scores['12347']['score']) * 100,
+    '12348': (scores['12346']['score'] / scores['12347']['score']) * 100,
+  },
+  '12348': {
+    '12345': (scores['12348']['score'] / scores['12345']['score']) * 100,
+    '12346': (scores['12346']['score'] / scores['12348']['score']) * 100,
+    '12347': (scores['12348']['score'] / scores['12347']['score']) * 100,
   }
-  
 }
 
-console.log(compatable['12345']['12348']);
