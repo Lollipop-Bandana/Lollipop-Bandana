@@ -10,4 +10,4 @@ find your new roomate with roomy!
  
  
  * run npm start
- * go to localhose:3000
+ * go to localhost:3000
